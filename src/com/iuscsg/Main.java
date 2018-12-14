@@ -1,24 +1,36 @@
 package com.iuscsg;
 
-import org.jibble.pircbot.*;
-
 import java.util.Scanner;
 
 public class Main {
     private static String name;
     private static String machine;
-    private static IRCBot bot;
+    private static IRCBot bot = new IRCBot();
     private static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
+        bot.setVerbose(true); // Remove me later
         System.out.println("Who are you? Enter a name: ");
         name = scan.next();
         System.out.println("What machine are you working on? This can be changed later");
         machine = scan.next();
-
-        IRCBot bot = new IRCBot(name);
-        // bot.connect(OURSERVER);
+        System.out.println("Enter an IRC server address without port number: ");
+        String server = scan.next();
+        System.out.println("Enter the port number, or press enter for the default (6667): ");
+        String port = scan.nextLine();
+        System.out.println("Connecting...");
+        try {
+            if (port.isEmpty()) {
+                bot.connect(server);
+            } else {
+                bot.connect(server, Integer.parseInt(port));
+            }
+        } catch (Exception e) {
+            System.out.println("Unable to connect to IRC server! Check your server settings, and make sure your nick is not in use.");
+            System.exit(1);
+        }
         bot.joinChannel("#events");
+        System.out.println("Connected to IRC using nick " + bot.getNick());
         System.out.println("################################################################################################");
         while(true) {
             System.out.println("0. Log local user password change");
@@ -45,7 +57,7 @@ public class Main {
     public static void passwordLocal() {
         System.out.println("Enter the username: ");
         String username = scan.next();
-        bot.sendMessage("#event", "Local user password for " + username + " changed on " + machine + " by " + name);
+        bot.sendMessage("#events", "Local user password for " + username + " changed on " + machine + " by " + name);
 
     }
 
@@ -54,7 +66,7 @@ public class Main {
         String service = scan.next();
         System.out.println("Enter a username: ");
         String username = scan.next();
-        bot.sendMessage("#event", "Service " + service + " user password for " + username + " changed on " + machine + " by " + name);
+        bot.sendMessage("#events", "Service " + service + " user password for " + username + " changed on " + machine + " by " + name);
 
     }
 
