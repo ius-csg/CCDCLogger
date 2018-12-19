@@ -1,4 +1,3 @@
-package com.iuscsg;
 import org.jibble.pircbot.*;
 
 public class IRCBot extends PircBot{
