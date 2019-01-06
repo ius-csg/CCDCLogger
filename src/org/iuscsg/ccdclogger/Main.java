@@ -1,14 +1,15 @@
+package org.iuscsg.ccdclogger;
 import java.util.Scanner;
 
 public class Main {
     private static String name;
     private static String machine;
-    private static IRCBot bot = new IRCBot();
+    private static IRCBotl bot = new IRCBotl();
     private static Scanner scan = new Scanner(System.in);
     private static String chan = "#events";
 
     public static void main(String[] args) {
-        bot.setVerbose(true); // Remove me later
+       // bot.setVerbose(true); // Remove me later
         System.out.print("Who are you? Enter a name: ");
         name = scan.next();
         System.out.print("What machine are you working on? This can be changed later: ");

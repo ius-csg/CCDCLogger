@@ -14,3 +14,7 @@ Give indicators of who did what on what machine
 I'll likely put it on GitHub once I get started
 Once it's ready, we can just pack up a JAR and pass it around
 ```
+
+Run from source:
+
+`java -classpath pircbot.jar: org.iuscsg.ccdclogger.Main`
