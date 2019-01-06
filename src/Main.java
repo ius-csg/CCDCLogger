@@ -11,7 +11,7 @@ public class Main {
         bot.setVerbose(true); // Remove me later
         System.out.print("Who are you? Enter a name: ");
         name = scan.next();
-        System.out.print("What machine are you working on? This can be changed later");
+        System.out.print("What machine are you working on? This can be changed later: ");
         machine = scan.next();
         System.out.print("Enter an IRC server address without port number: ");
         String server = scan.next();
