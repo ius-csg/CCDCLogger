@@ -12,12 +12,11 @@ public class Main {
     public static void main(String[] args) {
        // bot.setVerbose(true); // testing
         System.out.print("Who are you? Enter a name: ");
-        name = scan.next();
+        name = scan.nextLine();
         System.out.print("What machine are you working on? This can be changed later: ");
-        machine = scan.next();
+        machine = scan.nextLine();
         System.out.print("Enter an IRC server address without port number (using 6667): ");
-        scan.nextLine(); // Comsume newlines https://stackoverflow.com/questions/18751230/scanner-not-blocking-for-input
-        String server = scan.next();
+        String server = scan.nextLine();
         try {
             System.out.println("Connecting...");
             bot.connect(server);
@@ -52,15 +51,15 @@ public class Main {
                 break;
             case 3:
                 System.out.print("Enter the new machine name: ");
-                machine = scan.next();
+                machine = scan.nextLine();
                 break;
             case 4:
                 System.out.print("Enter a new name: ");
-                name = scan.next();
+                name = scan.nextLine();
                 break;
             case 5:
                 System.out.print("Enter a new nick: ");
-                bot.changeNick(scan.next());
+                bot.changeNick(scan.nextLine().replaceAll("\s", ""));
                 break;
             case -1:
                 bot.quitServer("Exited logger");
@@ -74,9 +73,9 @@ public class Main {
 
     public static void passwordLocal() {
         System.out.print("Enter the username: ");
-        String username = scan.next();
+        String username = scan.nextLine();
         System.out.print("Enter the new password: ");
-        String pass = scan.next();
+        String pass = scan.nextLine();
         bot.sendMessage(chan,
                 "Local user password for " + username + " changed on " + machine + " by " + name + " to " + pass);
 
@@ -84,11 +83,11 @@ public class Main {
 
     public static void passwordService() {
         System.out.print("Enter a service name: ");
-        String service = scan.next();
+        String service = scan.nextLine();
         System.out.print("Enter a username: ");
-        String username = scan.next();
+        String username = scan.nextLine();
         System.out.print("Enter the new password: ");
-        String pass = scan.next();
+        String pass = scan.nextLine();
         bot.sendMessage(chan, "Service " + service + " user password for " + username + " changed on " + machine
                 + " by " + name + " to " + pass);
 
@@ -96,7 +95,7 @@ public class Main {
 
     public static void otherEvent() {
         System.out.print("What did you do?: ");
-        String event = scan.next();
+        String event = scan.nextLine();
         bot.sendMessage(chan, "Custom event: " + event + " changed on " + machine + " by " + name);
     }
 
