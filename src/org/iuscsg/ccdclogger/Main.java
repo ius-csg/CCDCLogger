@@ -95,7 +95,7 @@ public class Main {
 
     public static void otherEvent() {
         System.out.print("What did you do?: ");
-        event = scan.next();
+        String event = scan.next();
         bot.sendMessage(chan, "Custom event: " + event + " changed on " + machine + " by " + name);
     }
 
