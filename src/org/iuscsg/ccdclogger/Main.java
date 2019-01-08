@@ -16,6 +16,7 @@ public class Main {
         System.out.print("What machine are you working on? This can be changed later: ");
         machine = scan.next();
         System.out.print("Enter an IRC server address without port number (using 6667): ");
+        scan.nextLine(); // Comsume newlines https://stackoverflow.com/questions/18751230/scanner-not-blocking-for-input
         String server = scan.next();
         try {
             System.out.println("Connecting...");
