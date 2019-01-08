@@ -1,4 +1,4 @@
 language: java
 jdk: openjdk11 
 script: 
-  - javac -classpath pircbot.jar:src/org/iuscsg/ccdclogger/*.java
+  - javac src/org/iuscsg/ccdclogger/*.java
