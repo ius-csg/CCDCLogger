@@ -59,7 +59,7 @@ public class Main {
                 break;
             case 5:
                 System.out.print("Enter a new nick: ");
-                bot.changeNick(scan.nextLine().replaceAll("\s", ""));
+                bot.changeNick(scan.nextLine().replaceAll("\\s", ""));
                 break;
             case -1:
                 bot.quitServer("Exited logger");
