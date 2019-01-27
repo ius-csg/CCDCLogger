@@ -37,7 +37,7 @@ public class Main {
             System.out.println("4. Change name (Current: " + name + ")");
             System.out.println("5. Change IRC bot nick (Current: " + bot.getNick() + ")");
             System.out.println("-1. Quit the program");
-            int option = scan.nextInt();
+            int option = Integer.parseInt(scan.nextLine());
 
             switch (option) {
             case 0:
