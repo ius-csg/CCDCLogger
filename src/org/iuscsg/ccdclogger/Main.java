@@ -77,7 +77,7 @@ public class Main {
         System.out.print("Enter the new password: ");
         String pass = scan.nextLine();
         bot.sendMessage(chan,
-                "Local user password for " + username + " changed on " + machine + " by " + name + " to " + pass);
+                "[" + machine + "] [" + name + "] Local user password for " + username + " changed to " + pass);
 
     }
 
@@ -88,15 +88,14 @@ public class Main {
         String username = scan.nextLine();
         System.out.print("Enter the new password: ");
         String pass = scan.nextLine();
-        bot.sendMessage(chan, "Service " + service + " user password for " + username + " changed on " + machine
-                + " by " + name + " to " + pass);
+        bot.sendMessage(chan, "[" + machine + "] [" + name + "] [" + service + "] user password for " + username + " changed to " + pass);
 
     }
 
     public static void otherEvent() {
-        System.out.print("What did you do?: ");
+        System.out.print("What did you do now?: ");
         String event = scan.nextLine();
-        bot.sendMessage(chan, "Custom event: " + event + " changed on " + machine + " by " + name);
+        bot.sendMessage(chan, "[" + machine + "] [" + name + "] Other: " + event);
     }
 
 }
