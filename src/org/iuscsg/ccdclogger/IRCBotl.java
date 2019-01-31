@@ -28,6 +28,7 @@ public class IRCBotl extends PircBot {
             try
             {
                 this.reconnect();
+                this.joinChannel("#events");
             } catch (Exception e) {
                 System.out.println("Failed to reconnect. Exiting...");
                 System.exit(2);
