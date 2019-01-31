@@ -10,7 +10,7 @@ public class IRCBotl extends PircBot {
     {
         if (recipientNick.equals(this.getNick()))
         {
-            System.out.println("Bot was kicked from #events! Rejoining right away...");
+            System.out.println("Bot was kicked from #events! Rejoining right away");
             this.joinChannel("#events");
         }
     }
@@ -24,7 +24,7 @@ public class IRCBotl extends PircBot {
     {
         if (!exit)
         {
-            System.out.println("Connection lost! Attempting to reconnect...");
+            System.out.println("Connection lost! Reconnecting right away");
             try
             {
                 this.reconnect();
