@@ -63,7 +63,12 @@ public class Main {
             case 5:
                 System.out.print("Enter a new nick: ");
                 bot.changeNick(scan.nextLine().replaceAll("\\s", ""));
-                Thread.sleep(2000); // Let the server catch up to the change
+                try
+                {
+                    Thread.sleep(2000); // Let the server catch up to the change
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
                 break;
             case 6:
             bot.sendMessage(chan, "[" + machine + "] [" + name + "] Scrub started :(");
