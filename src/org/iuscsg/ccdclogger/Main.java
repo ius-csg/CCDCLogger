@@ -8,6 +8,7 @@ public class Main {
     private static IRCBotl bot = new IRCBotl();
     private static Scanner scan = new Scanner(System.in);
     private static String chan = "#events";
+    
 
     public static void main(String[] args) {
        // bot.setVerbose(true); // testing
@@ -16,13 +17,14 @@ public class Main {
         System.out.print("What machine are you working on? This can be changed later: ");
         machine = scan.nextLine();
         System.out.print("Enter an IRC server address without port number (using 6667): ");
+        bot.setAutoNickChange(true);
         String server = scan.nextLine();
         try {
             System.out.println("Connecting...");
             bot.connect(server);
         } catch (Exception e) {
             System.out.println(
-                    "Unable to connect to IRC server! Check your server settings, and make sure your nick is not in use.");
+                    "Unable to connect to IRC server! Check your server settings, and try again later.");
             System.exit(1);
         }
         bot.joinChannel(chan);
@@ -36,6 +38,7 @@ public class Main {
             System.out.println("3. Change machines (Current: " + machine + ")");
             System.out.println("4. Change name (Current: " + name + ")");
             System.out.println("5. Change IRC bot nick (Current: " + bot.getNick() + ")");
+            System.out.println("6. Scrub server");
             System.out.println("-1. Quit the program");
             int option = Integer.parseInt(scan.nextLine());
 
@@ -60,8 +63,18 @@ public class Main {
             case 5:
                 System.out.print("Enter a new nick: ");
                 bot.changeNick(scan.nextLine().replaceAll("\\s", ""));
+                try
+                {
+                    Thread.sleep(2000); // Let the server catch up to the change
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
                 break;
+            case 6:
+            bot.sendMessage(chan, "[" + machine + "] [" + name + "] Scrub started :(");
+            break;
             case -1:
+                bot.setExit(true);
                 bot.quitServer("Exited logger");
                 System.exit(0);
             default:
